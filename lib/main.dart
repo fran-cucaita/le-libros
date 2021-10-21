@@ -11,12 +11,28 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         home: Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.deepPurple,
-        title: Text("Home"),
+        backgroundColor: Colors.white,
+        shadowColor: Colors.white,
+        title: Text(
+          "Home",
+          style: TextStyle(
+            color: Colors.black,
+          ),
+          textAlign: TextAlign.center,
+        ),
       ),
-      body: Padding(
+      body: SingleChildScrollView(
+          child: Padding(
         padding: const EdgeInsets.all(12.0),
         child: Column(children: <Widget>[
+          TextField(
+            onChanged: (value) {
+              print(value);
+            },
+            decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: 'Title, authors, or topics'),
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -25,10 +41,9 @@ class MyApp extends StatelessWidget {
                 child: Text(
                   "Trending Books",
                   style: const TextStyle(
-                    color: Colors.blueAccent,
+                    color: Colors.black,
                     fontSize: 26,
                     fontWeight: FontWeight.bold,
-                    backgroundColor: Colors.yellow,
                   ),
                   textDirection: TextDirection.ltr,
                 ),
@@ -37,68 +52,81 @@ class MyApp extends StatelessWidget {
                 "See All",
                 style: const TextStyle(
                   color: Colors.grey,
-                  fontSize: 10,
+                  fontSize: 18,
                   fontWeight: FontWeight.bold,
-                  backgroundColor: Colors.pink,
                 ),
                 textDirection: TextDirection.ltr,
               ),
             ],
           ),
-          Row(
-            children: [
-              Column(
-                children: <Widget>[
-                  Image.asset(
-                    "assets/images/libro1.jpg",
-                    width: 100,
+          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: [
+                  Column(
+                    children: <Widget>[
+                      Image.asset(
+                        "assets/images/libro1.jpg",
+                        width: 100,
+                      ),
+                      Text(
+                        "El nombre 1",
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                        ),
+                        textDirection: TextDirection.ltr,
+                      ),
+                    ],
                   ),
-                  Text(
-                    "tercer Texto",
-                    style: const TextStyle(
-                      color: Colors.blueAccent,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
+                  Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Column(
+                      children: <Widget>[
+                        Image.asset(
+                          "assets/images/libro2.jpg",
+                          width: 100,
+                        ),
+                        Text(
+                          "El nombre ",
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                          ),
+                          textDirection: TextDirection.ltr,
+                        ),
+                      ],
                     ),
-                    textDirection: TextDirection.ltr,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Column(
+                      children: <Widget>[
+                        Image.asset(
+                          "assets/images/libro3.jpg",
+                          width: 100,
+                        ),
+                        Text(
+                          "El nombre 2",
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                          ),
+                          textDirection: TextDirection.ltr,
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
-              Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: Column(
-                  children: <Widget>[
-                    Image.asset(
-                      "assets/images/libro2.jpg",
-                      width: 100,
-                    ),
-                    Text(
-                      "tercer Texto",
-                      style: const TextStyle(
-                        backgroundColor: Colors.black,
-                        color: Colors.red,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      textDirection: TextDirection.ltr,
-                    ),
-                    Text(
-                      "tercer Texto",
-                      style: const TextStyle(
-                        backgroundColor: Colors.black,
-                        color: Colors.red,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      textDirection: TextDirection.ltr,
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
+            ),
+          ])
         ]),
-      ),
+      )),
     ));
   }
 }
