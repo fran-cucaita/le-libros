@@ -182,14 +182,6 @@ class MyApp extends StatelessWidget {
                   Container(
                     height: 120,
                     color: Colors.red,
-                    child: Row(
-                      children: [
-                        Image.asset(
-                          "assets/images/Authors/Patrick-rothfuss.jpg",
-                          height: 30,
-                        ),
-                      ],
-                    ),
                   ),
                 ],
               )),
