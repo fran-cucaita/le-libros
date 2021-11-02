@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:le_libros/helpers/http_helper.dart';
+import 'package:le_libros/models/response.dart';
 import 'package:le_libros/pages/desc.dart';
+import 'package:le_libros/widgets/book_widget.dart';
 
 class Home extends StatelessWidget {
   static const String ROUTE = '/home';
@@ -105,89 +108,35 @@ class Home extends StatelessWidget {
                     ],
                   )),
             ),
-            Container(
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 250,
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
+            FutureBuilder<Response>(
+                future: HttpHelper().getRecentPublished(),
+                builder: (context, snapshot) {
+                  if (!snapshot.hasData) {
+                    return Container();
+                  }
+                  final response = snapshot.data!;
+                  final books = response.records;
+                  final book1 = books[0];
+                  final book2 = books[1];
+                  final book3 = books[2];
+                  return Container(
+                    child: Column(
                       children: [
-                        Column(
-                          children: [
-                            IconButton(
-                              icon: Image.asset("assets/images/libro1.jpg"),
-                              iconSize: 150,
-                              onPressed: () {
-                                Navigator.pushNamed(context, Desc.ROUTE);
-                              },
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                "El nombre 1",
-                                style: const TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                                textDirection: TextDirection.ltr,
-                              ),
-                            ),
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            IconButton(
-                              icon: Image.asset("assets/images/libro2.jpg"),
-                              iconSize: 150,
-                              onPressed: () {
-                                Navigator.pushNamed(context, Desc.ROUTE);
-                              },
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                "El nombre 2",
-                                style: const TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                                textDirection: TextDirection.ltr,
-                              ),
-                            ),
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            IconButton(
-                              icon: Image.asset("assets/images/libro3.jpg"),
-                              iconSize: 150,
-                              onPressed: () {
-                                Navigator.pushNamed(context, Desc.ROUTE);
-                              },
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                "El nombre 3",
-                                style: const TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                                textDirection: TextDirection.ltr,
-                              ),
-                            ),
-                          ],
-                        ),
+                        SizedBox(
+                          height: 250,
+                          child: ListView(
+                            scrollDirection: Axis.horizontal,
+                            children: [
+                              BookWidget(icon: book1.image, name: book1.title),
+                              BookWidget(icon: book2.image, name: book2.title),
+                              BookWidget(icon: book3.image, name: book3.title),
+                            ],
+                          ),
+                        )
                       ],
                     ),
-                  )
-                ],
-              ),
-            ),
+                  );
+                }),
           ],
         ),
       )),
