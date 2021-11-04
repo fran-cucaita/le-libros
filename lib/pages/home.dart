@@ -65,13 +65,9 @@ class Home extends StatelessWidget {
                 future: HttpHelper().getCategory(),
                 builder: (context, snapshot) {
                   if (!snapshot.hasData) {
-                    return Container();
+                    return CircularProgressIndicator();
                   }
                   final categories = snapshot.data!;
-
-                  // final category1 = categories[0];
-                  // final category2 = categories[1];
-                  // final category3 = categories[2];
                   return SizedBox(
                     height: 200,
                     child: GridView.builder(
@@ -79,7 +75,11 @@ class Home extends StatelessWidget {
                       scrollDirection: Axis.horizontal,
                       itemCount: categories.length,
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 3),
+                        crossAxisCount: 3,
+                        childAspectRatio: 0.3,
+                        crossAxisSpacing: 10,
+                        mainAxisSpacing: 20,
+                      ),
                       itemBuilder: (BuildContext context, int index) {
                         return ButtonCategory(
                             title: categories[index].title,
