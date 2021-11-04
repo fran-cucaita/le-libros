@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:le_libros/helpers/http_helper.dart';
+import 'package:le_libros/models/categories.dart';
 import 'package:le_libros/models/response.dart';
 import 'package:le_libros/pages/desc.dart';
 import 'package:le_libros/widgets/book_widget.dart';
+import 'package:le_libros/widgets/button_categorie_widget.dart';
 
 class Home extends StatelessWidget {
   static const String ROUTE = '/home';
@@ -59,29 +61,33 @@ class Home extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
-              height: 400,
-              child: GridView.count(
-                crossAxisCount: 3,
-                scrollDirection: Axis.horizontal,
-                children: [
-                  ElevatedButton(
-                    onPressed: () {},
-                    child: Text("Motivation1"),
-                    style: ButtonStyle(),
-                  ),
-                  ElevatedButton(onPressed: () {}, child: Text("Motivation2")),
-                  ElevatedButton(onPressed: () {}, child: Text("Motivation3")),
-                  ElevatedButton(onPressed: () {}, child: Text("Motivation1")),
-                  ElevatedButton(onPressed: () {}, child: Text("Motivation2")),
-                  ElevatedButton(onPressed: () {}, child: Text("Motivation3")),
-                  ElevatedButton(onPressed: () {}, child: Text("Motivation3")),
-                  ElevatedButton(onPressed: () {}, child: Text("Motivation1")),
-                  ElevatedButton(onPressed: () {}, child: Text("Motivation2")),
-                  ElevatedButton(onPressed: () {}, child: Text("Motivation3")),
-                ],
-              ),
-            ),
+            FutureBuilder<List>(
+                future: HttpHelper().getCategory(),
+                builder: (context, snapshot) {
+                  if (!snapshot.hasData) {
+                    return Container();
+                  }
+                  final categories = snapshot.data!;
+
+                  // final category1 = categories[0];
+                  // final category2 = categories[1];
+                  // final category3 = categories[2];
+                  return SizedBox(
+                    height: 200,
+                    child: GridView.builder(
+                      padding: EdgeInsets.all(5),
+                      scrollDirection: Axis.horizontal,
+                      itemCount: categories.length,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 3),
+                      itemBuilder: (BuildContext context, int index) {
+                        return ButtonCategory(
+                            title: categories[index].title,
+                            image: categories[index].image);
+                      },
+                    ),
+                  );
+                }),
             Container(
               width: 1000,
               child: Padding(
@@ -116,26 +122,17 @@ class Home extends StatelessWidget {
                   }
                   final response = snapshot.data!;
                   final books = response.records;
-                  final book1 = books[0];
-                  final book2 = books[1];
-                  final book3 = books[2];
-                  return Container(
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: 250,
-                          child: ListView(
-                            scrollDirection: Axis.horizontal,
-                            children: [
-                              BookWidget(icon: book1.image, name: book1.title),
-                              BookWidget(icon: book2.image, name: book2.title),
-                              BookWidget(icon: book3.image, name: book3.title),
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
-                  );
+                  return SizedBox(
+                      height: 250,
+                      child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          padding: const EdgeInsets.all(4),
+                          itemCount: books.length,
+                          itemBuilder: (BuildContext context, int book) {
+                            return BookWidget(
+                                icon: books[book].image,
+                                name: books[book].title);
+                          }));
                 }),
           ],
         ),

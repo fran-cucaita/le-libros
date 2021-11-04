@@ -1,7 +1,7 @@
 class Book {
-  String code;
-  String title;
-  String image;
+  final String code;
+  final String title;
+  final String image;
 
   Book({required this.code, required this.title, required this.image});
 
