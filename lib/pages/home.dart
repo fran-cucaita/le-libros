@@ -96,6 +96,33 @@ class Home extends StatelessWidget {
               }
               throw StateError('hubo un error');
             }),
+            FutureBuilder<List>(
+                future: HttpHelper().getCategory(),
+                builder: (context, snapshot) {
+                  if (!snapshot.hasData) {
+                    return CircularProgressIndicator();
+                  }
+                  final categories = snapshot.data!;
+                  return SizedBox(
+                    height: 200,
+                    child: GridView.builder(
+                      padding: EdgeInsets.all(5),
+                      scrollDirection: Axis.horizontal,
+                      itemCount: categories.length,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 3,
+                        childAspectRatio: 0.3,
+                        crossAxisSpacing: 10,
+                        mainAxisSpacing: 20,
+                      ),
+                      itemBuilder: (BuildContext context, int index) {
+                        return ButtonCategory(
+                            title: categories[index].title,
+                            image: categories[index].image);
+                      },
+                    ),
+                  );
+                }),
             Container(
               width: 1000,
               child: Padding(
