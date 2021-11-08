@@ -71,7 +71,7 @@ class Home extends StatelessWidget {
               } else if (state is ErrorCategoryState) {
                 return Text('Ups! Hubo un error');
               } else if (state is LoadCategoryState) {
-                final categories = HttpHelper().getCategory().toString();
+                final categories = state.categories;
                 return SizedBox(
                   height: 200,
                   child: GridView.builder(
@@ -85,10 +85,8 @@ class Home extends StatelessWidget {
                       mainAxisSpacing: 20,
                     ),
                     itemBuilder: (BuildContext context, int index) {
-                      return Container(
-                        color: Colors.red,
-                        width: 50,
-                        height: 50,
+                      return ButtonCategory(
+                        title: categories[index].title, image: categories[index].image,
                       );
                     },
                   ),
@@ -96,33 +94,6 @@ class Home extends StatelessWidget {
               }
               throw StateError('hubo un error');
             }),
-            FutureBuilder<List>(
-                future: HttpHelper().getCategory(),
-                builder: (context, snapshot) {
-                  if (!snapshot.hasData) {
-                    return CircularProgressIndicator();
-                  }
-                  final categories = snapshot.data!;
-                  return SizedBox(
-                    height: 200,
-                    child: GridView.builder(
-                      padding: EdgeInsets.all(5),
-                      scrollDirection: Axis.horizontal,
-                      itemCount: categories.length,
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 3,
-                        childAspectRatio: 0.3,
-                        crossAxisSpacing: 10,
-                        mainAxisSpacing: 20,
-                      ),
-                      itemBuilder: (BuildContext context, int index) {
-                        return ButtonCategory(
-                            title: categories[index].title,
-                            image: categories[index].image);
-                      },
-                    ),
-                  );
-                }),
             Container(
               width: 1000,
               child: Padding(

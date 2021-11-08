@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
     myrequest();
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (_) => CategoryBloc()..add(LoadCategoryEvent()))
+        BlocProvider(create: (_) => CategoryBloc()..add(const LoadCategoryEvent()))
       ],
       child: MaterialApp(
         title: 'Le_libros',
