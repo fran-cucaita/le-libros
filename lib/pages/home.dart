@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:le_libros/category_bloc.dart';
+import 'package:le_libros/events/category_event.dart';
 import 'package:le_libros/helpers/http_helper.dart';
 import 'package:le_libros/models/categories.dart';
 import 'package:le_libros/models/response.dart';
 import 'package:le_libros/pages/desc.dart';
+import 'package:le_libros/states/categories_state.dart';
 import 'package:le_libros/widgets/book_widget.dart';
 import 'package:le_libros/widgets/button_categorie_widget.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Home extends StatelessWidget {
   static const String ROUTE = '/home';
@@ -61,33 +65,37 @@ class Home extends StatelessWidget {
                 ),
               ),
             ),
-            FutureBuilder<List>(
-                future: HttpHelper().getCategory(),
-                builder: (context, snapshot) {
-                  if (!snapshot.hasData) {
-                    return CircularProgressIndicator();
-                  }
-                  final categories = snapshot.data!;
-                  return SizedBox(
-                    height: 200,
-                    child: GridView.builder(
-                      padding: EdgeInsets.all(5),
-                      scrollDirection: Axis.horizontal,
-                      itemCount: categories.length,
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 3,
-                        childAspectRatio: 0.3,
-                        crossAxisSpacing: 10,
-                        mainAxisSpacing: 20,
-                      ),
-                      itemBuilder: (BuildContext context, int index) {
-                        return ButtonCategory(
-                            title: categories[index].title,
-                            image: categories[index].image);
-                      },
+            BlocBuilder<CategoryBloc, CategoryState>(builder: (context, state) {
+              if (state is LoadingCategoryState) {
+                return const CircularProgressIndicator();
+              } else if (state is ErrorCategoryState) {
+                return Text('Ups! Hubo un error');
+              } else if (state is LoadCategoryState) {
+                final categories = HttpHelper().getCategory().toString();
+                return SizedBox(
+                  height: 200,
+                  child: GridView.builder(
+                    padding: EdgeInsets.all(5),
+                    scrollDirection: Axis.horizontal,
+                    itemCount: categories.length,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3,
+                      childAspectRatio: 0.3,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 20,
                     ),
-                  );
-                }),
+                    itemBuilder: (BuildContext context, int index) {
+                      return Container(
+                        color: Colors.red,
+                        width: 50,
+                        height: 50,
+                      );
+                    },
+                  ),
+                );
+              }
+              throw StateError('hubo un error');
+            }),
             Container(
               width: 1000,
               child: Padding(

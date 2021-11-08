@@ -1,10 +1,13 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:le_libros/category_bloc.dart';
+import 'package:le_libros/events/category_event.dart';
 import 'package:le_libros/helpers/http_helper.dart';
 import 'package:le_libros/pages/desc.dart';
 import 'package:le_libros/pages/home.dart';
 import 'package:http/http.dart' as http;
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
   runApp(MyApp());
@@ -24,13 +27,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     myrequest();
-    return MaterialApp(
-      title: 'Le_libros',
-      initialRoute: Home.ROUTE,
-      routes: {
-        Home.ROUTE: (_) => Home(),
-        Desc.ROUTE: (_) => Desc(),
-      },
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => CategoryBloc()..add(LoadCategoryEvent()))
+      ],
+      child: MaterialApp(
+        title: 'Le_libros',
+        initialRoute: Home.ROUTE,
+        routes: {
+          Home.ROUTE: (_) => Home(),
+          Desc.ROUTE: (_) => Desc(),
+        },
+      ),
     );
   }
 }
