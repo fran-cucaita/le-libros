@@ -4,7 +4,6 @@ import 'package:le_libros/events/category_event.dart';
 import 'package:le_libros/helpers/http_helper.dart';
 import 'package:le_libros/models/categories.dart';
 import 'package:le_libros/models/response.dart';
-import 'package:le_libros/pages/desc.dart';
 import 'package:le_libros/states/categories_state.dart';
 import 'package:le_libros/widgets/book_widget.dart';
 import 'package:le_libros/widgets/button_categorie_widget.dart';
@@ -86,7 +85,8 @@ class Home extends StatelessWidget {
                     ),
                     itemBuilder: (BuildContext context, int index) {
                       return ButtonCategory(
-                        title: categories[index].title, image: categories[index].image,
+                        title: categories[index].title,
+                        image: categories[index].image,
                       );
                     },
                   ),

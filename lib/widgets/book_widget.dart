@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:le_libros/pages/desc.dart';
+import 'package:le_libros/app/ui/pages/desc.dart';
 
 class BookWidget extends StatelessWidget {
   final String icon;

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "305610546696",
+    "project_id": "le-libros-auth",
+    "storage_bucket": "le-libros-auth.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:305610546696:android:1f4825f173f2227cabfbbd",
+        "android_client_info": {
+          "package_name": "com.example.le_libros"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "305610546696-q7jlpkmatvb9f97abbgmtqch7qhcdk64.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjOGRINqoZpL436Wr9B6t0lEEdD2tbRus"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "305610546696-q7jlpkmatvb9f97abbgmtqch7qhcdk64.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
