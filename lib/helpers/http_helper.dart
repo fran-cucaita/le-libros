@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
-import 'package:le_libros/models/categories.dart';
-import 'package:le_libros/models/response.dart';
+import 'package:le_libros/app/domain/models/categories.dart';
+import 'package:le_libros/app/domain/models/response.dart';
 
 class HttpHelper {
   //static final String key ='x-api-key=1nzDBp77Nt97AZEjumlV7CmsiYrLTbA9NcbrieU2';

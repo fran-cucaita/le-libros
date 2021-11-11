@@ -1,4 +1,4 @@
-import 'package:le_libros/models/categories.dart';
+import 'package:le_libros/app/domain/models/categories.dart';
 
 abstract class CategoryState {
   const CategoryState();

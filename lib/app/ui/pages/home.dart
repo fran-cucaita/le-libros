@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:le_libros/app/domain/models/response.dart';
 import 'package:le_libros/category_bloc.dart';
 import 'package:le_libros/events/category_event.dart';
 import 'package:le_libros/helpers/http_helper.dart';
-import 'package:le_libros/models/categories.dart';
-import 'package:le_libros/models/response.dart';
 import 'package:le_libros/states/categories_state.dart';
 import 'package:le_libros/widgets/book_widget.dart';
 import 'package:le_libros/widgets/button_categorie_widget.dart';
