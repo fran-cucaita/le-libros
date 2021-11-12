@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:le_libros/app/ui/pages/desc.dart';
-import 'package:le_libros/app/ui/pages/home.dart';
+import 'package:le_libros/app/ui/pages/home/home.dart';
 import 'package:le_libros/app/ui/routes/app_routes.dart';
 import 'package:le_libros/category_bloc.dart';
 import 'package:le_libros/events/category_event.dart';
@@ -10,6 +10,7 @@ import 'package:le_libros/helpers/http_helper.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_meedu/router.dart' as router;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -39,6 +40,9 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Le_libros',
         initialRoute: Home.ROUTE,
+        navigatorObservers: [
+          router.observer,
+        ],
         routes: appRoutes,
       ),
     );
