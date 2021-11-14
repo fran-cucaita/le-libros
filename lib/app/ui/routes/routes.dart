@@ -1,5 +1,7 @@
 abstract class Routes {
+  static const Splash = '/splash';
+  static const LogIn = '/login';
+  static const Register = '/register';
   static const Home = '/home';
   static const Desc = '/desc';
-  static const LogIn = '/login';
 }
