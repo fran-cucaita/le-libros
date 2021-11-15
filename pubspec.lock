@@ -388,7 +388,7 @@ packages:
     source: hosted
     version: "4.2.1+1"
   meta:
-    dependency: "direct overridden"
+    dependency: transitive
     description:
       name: meta
       url: "https://pub.dartlang.org"
