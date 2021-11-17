@@ -10,7 +10,6 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   final Completer<void> _completer = Completer();
 
   AuthenticationRepositoryImpl(this._auth) {
-    print('AuthRepositoryImpl OK');
     _init();
   }
 
@@ -29,5 +28,10 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
         _user = user;
       }
     });
+  }
+
+  @override
+  Future<void> SignOut() {
+    return _auth.signOut();
   }
 }

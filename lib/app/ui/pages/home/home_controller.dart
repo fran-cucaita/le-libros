@@ -14,10 +14,6 @@ class HomeController extends SimpleNotifier {
   void _init() async {
     final user = await _authRepository.user;
     _routeName = user != null ? Routes.Home : Routes.LogIn;
-    // if(user != null){
-    //   print('user is not null');
-    // }else {
-    //   print('user is null');
     notify();
   }
 }

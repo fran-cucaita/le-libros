@@ -9,7 +9,6 @@ class SplashController extends SimpleNotifier {
   String? get routeName => _routeName;
 
   SplashController() {
-    print("splash controller ok");
     _init();
   }
 

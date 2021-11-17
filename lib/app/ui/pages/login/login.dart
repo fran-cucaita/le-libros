@@ -11,6 +11,8 @@ final splashProvider = SimpleProvider((_) => SplashController());
 class LoginPage extends StatelessWidget {
   static const String ROUTE = '/login';
 
+  const LoginPage({Key? key}) : super(key: key);
+
   Widget build(BuildContext context) {
     return ProviderListener<SplashController>(
         provider: splashProvider,
