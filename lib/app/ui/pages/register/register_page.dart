@@ -50,9 +50,7 @@ class RegisterPage extends StatelessWidget {
                         onChanged: controller.OnLastNameChanged,
                         validator: (text) {
                           if (text == null) return null;
-                          return isValidName(text)
-                              ? null
-                              : "Invalid last name ";
+                          return isValidName(text) ? null : "Invalid last name";
                         },
                       ),
                       SizedBox(

@@ -32,7 +32,7 @@ class _InputTextFieldState extends State<InputTextField> {
   Widget build(BuildContext context) {
     return FormField(
         validator: widget.validator,
-        autovalidateMode: AutovalidateMode.always,
+        autovalidateMode: AutovalidateMode.onUserInteraction,
         builder: (state) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
