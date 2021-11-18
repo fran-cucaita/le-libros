@@ -2,7 +2,6 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_meedu/flutter_meedu.dart';
-import 'package:le_libros/app/ui/pages/splash/splash_controller.dart';
 import 'package:flutter_meedu/router.dart' as router;
 import 'package:le_libros/app/ui/routes/routes.dart';
 import 'package:le_libros/app/utils/email_validator.dart';
@@ -14,8 +13,6 @@ import 'controller/login_controller.dart';
 final LoginProvider = SimpleProvider(
   (_) => LoginController(),
 );
-
-final splashProvider = SimpleProvider((_) => SplashController());
 
 class LoginPage extends StatelessWidget {
   static const String ROUTE = '/login';
