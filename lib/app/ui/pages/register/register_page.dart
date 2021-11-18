@@ -23,92 +23,96 @@ class RegisterPage extends StatelessWidget {
       builder: (_, controller) {
         return Scaffold(
             appBar: AppBar(),
-            body: Center(
+            body: Container(
                 child: GestureDetector(
               onTap: () => FocusScope.of(context).unfocus(),
               child: Container(
                 color: Colors.transparent,
                 width: double.infinity,
-                padding: EdgeInsets.all(12),
+                padding: EdgeInsets.all(8),
                 child: Form(
                   key: controller.formKey,
-                  child: Column(
-                    children: [
-                      InputTextField(
-                        label: "Name",
-                        onChanged: controller.OnNameChanged,
-                        validator: (text) {
-                          if (text == null) return null;
-                          return isValidName(text) ? null : "Invalid name ";
-                        },
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      InputTextField(
-                        label: "Last Name",
-                        onChanged: controller.OnLastNameChanged,
-                        validator: (text) {
-                          if (text == null) return null;
-                          return isValidName(text) ? null : "Invalid last name";
-                        },
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      InputTextField(
-                        label: "Email",
-                        inputType: TextInputType.emailAddress,
-                        onChanged: controller.OnEmailChanged,
-                        validator: (text) {
-                          if (text == null) return null;
-                          return isValidEmail(text) ? null : "Invalid email";
-                        },
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      InputTextField(
-                        label: "Password",
-                        onChanged: controller.OnPasswordChanged,
-                        isPassword: true,
-                        validator: (text) {
-                          if (text == null) return null;
-                          if (text.trim().length >= 6) {
-                            return null;
-                          }
-                          return "invalid password";
-                        },
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Consumer(builder: (_, watch, __) {
-                        // revisar el watch para mirar cuando cambia password
-                        //watch(registerProvider.select((state) => state.password),);
-                        return InputTextField(
-                            label: "Verify Password",
-                            onChanged: controller.OnVPasswordChanged,
-                            isPassword: true,
-                            validator: (text) {
-                              if (text == null) return null;
-                              if (controller.state.password != text) {
-                                return "la contraseña no conicide";
-                              }
-                              if (text.trim().length >= 6) {
-                                return null;
-                              }
-                              return "invalid password";
-                            });
-                      }),
-                      SizedBox(
-                        height: 30,
-                      ),
-                      ElevatedButton(
-                        onPressed: () => sendRegisterForm(context),
-                        child: Text("register"),
-                      ),
-                    ],
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        InputTextField(
+                          label: "Name",
+                          onChanged: controller.OnNameChanged,
+                          validator: (text) {
+                            if (text == null) return null;
+                            return isValidName(text) ? null : "Invalid name ";
+                          },
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        InputTextField(
+                          label: "Last Name",
+                          onChanged: controller.OnLastNameChanged,
+                          validator: (text) {
+                            if (text == null) return null;
+                            return isValidName(text)
+                                ? null
+                                : "Invalid last name";
+                          },
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        InputTextField(
+                          label: "Email",
+                          inputType: TextInputType.emailAddress,
+                          onChanged: controller.OnEmailChanged,
+                          validator: (text) {
+                            if (text == null) return null;
+                            return isValidEmail(text) ? null : "Invalid email";
+                          },
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        InputTextField(
+                          label: "Password",
+                          onChanged: controller.OnPasswordChanged,
+                          isPassword: true,
+                          validator: (text) {
+                            if (text == null) return null;
+                            if (text.trim().length >= 6) {
+                              return null;
+                            }
+                            return "invalid password";
+                          },
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Consumer(builder: (_, watch, __) {
+                          // revisar el watch para mirar cuando cambia password
+                          //watch(registerProvider.select((state) => state.password),);
+                          return InputTextField(
+                              label: "Verify Password",
+                              onChanged: controller.OnVPasswordChanged,
+                              isPassword: true,
+                              validator: (text) {
+                                if (text == null) return null;
+                                if (controller.state.password != text) {
+                                  return "la contraseña no conicide";
+                                }
+                                if (text.trim().length >= 6) {
+                                  return null;
+                                }
+                                return "invalid password";
+                              });
+                        }),
+                        SizedBox(
+                          height: 30,
+                        ),
+                        ElevatedButton(
+                          onPressed: () => sendRegisterForm(context),
+                          child: Text("register"),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
