@@ -9,7 +9,7 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
     on<LoadCategoryEvent>((event, emit) async {
       emit(const LoadingCategoryState());
 
-      final categories = await httpHelper.getCategory();
+      final categories = await httpHelper.getCategories();
       emit(LoadCategoryState(categories));
     });
   }

@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
-import 'package:le_libros/app/domain/models/categories.dart';
+import 'package:le_libros/app/domain/models/category.dart';
 import 'package:le_libros/app/domain/models/response.dart';
 
 class HttpHelper {
@@ -21,7 +21,7 @@ class HttpHelper {
     return r;
   }
 
-  Future<List<Category>> getCategory() async {
+  Future<List<Category>> getCategories() async {
     final urlCategory = await http.get(Uri.parse(urlCategories));
     final strbody = urlCategory.body;
     final body = json.decode(strbody);

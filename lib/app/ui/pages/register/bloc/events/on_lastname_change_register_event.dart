@@ -4,8 +4,8 @@
 import 'package:flutter/material.dart';
 import 'package:le_libros/app/ui/pages/register/bloc/events/register_event.dart';
 
-class DoRegisterEvent extends RegisterEvent {
-  final BuildContext context;
+class OnLastNameChangeRegisterEvent extends RegisterEvent {
+  final String input;
 
-  DoRegisterEvent(this.context);
+  OnLastNameChangeRegisterEvent(this.input);
 }
