@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class Desc extends StatelessWidget {
+class DescPage extends StatelessWidget {
   static const String ROUTE = '/desc';
 
   @override
@@ -35,7 +35,8 @@ class Desc extends StatelessWidget {
                       ),
                       Container(
                         child: Text(
-                          'titulo',
+                          'Estoy en desc con Titulo----',
+                          // $bookCode',
                           style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,

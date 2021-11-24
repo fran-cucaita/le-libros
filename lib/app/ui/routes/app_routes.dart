@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart' show Widget, BuildContext;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_meedu/flutter_meedu.dart';
+import 'package:le_libros/app/ui/pages/details/desc_page.dart';
 import 'package:le_libros/app/ui/pages/home/home.dart';
 import 'package:le_libros/app/ui/pages/login/login_page.dart';
 import 'package:le_libros/app/ui/pages/register/bloc/register_bloc.dart';
@@ -55,13 +56,14 @@ PageRoute onGenerateRoute(RouteSettings settings) {
     }
     final bookCode = pathSegments[1];
 
-    return MaterialPageRoute(
-        builder: (_) => Scaffold(
-              appBar: AppBar(),
-              body: Center(
-                child: Text('Estoy en desc con codigo - $bookCode'),
-              ),
-            ));
+    return MaterialPageRoute(builder: (_) => DescPage());
+    //  MaterialPageRoute(
+    //     builder: (_) => Scaffold(
+    //           appBar: AppBar(),
+    //           body: Center(
+    //             child: Text('Estoy en desc con codigo - $bookCode'),
+    //           ),
+    //         ));
   }
 
   throw StateError("No encontre donde mandarte");
