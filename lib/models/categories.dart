@@ -3,7 +3,11 @@ class Category {
   final String title;
   final String image;
 
-  Category({required this.code, required this.title, required this.image});
+  Category({
+    required this.code,
+    required this.title,
+    required this.image,
+  });
 
   Category.fromJson(Map json)
       : code = json['code'],
