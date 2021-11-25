@@ -3,10 +3,9 @@ import 'package:flutter_meedu/flutter_meedu.dart';
 import 'package:le_libros/app/domain/models/response.dart';
 import 'package:le_libros/app/domain/repositories/authentication_repository.dart';
 import 'package:le_libros/app/ui/routes/routes.dart';
-import 'package:le_libros/category_bloc.dart';
-import 'package:le_libros/events/category_event.dart';
+import 'package:le_libros/categories/category_bloc.dart';
+import 'package:le_libros/categories/states/categories_state.dart';
 import 'package:le_libros/helpers/http_helper.dart';
-import 'package:le_libros/states/categories_state.dart';
 import 'package:le_libros/widgets/book_widget.dart';
 import 'package:le_libros/widgets/button_categorie_widget.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -75,12 +74,15 @@ class Home extends StatelessWidget {
                 ),
               ),
             ),
-            BlocBuilder<CategoryBloc, CategoryState>(builder: (context, state) {
+            BlocBuilder<CategoryBloc, CategoryState>(builder: (
+              context,
+              state,
+            ) {
               if (state is LoadingCategoryState) {
                 return const CircularProgressIndicator();
               } else if (state is ErrorCategoryState) {
                 return Text('Ups! Hubo un error');
-              } else if (state is LoadCategoryState) {
+              } else if (state is LoadedCategoryState) {
                 final categories = state.categories;
                 return SizedBox(
                   height: 200,
@@ -147,7 +149,7 @@ class Home extends StatelessWidget {
                           itemCount: books.length,
                           itemBuilder: (BuildContext context, int book) {
                             return BookWidget(
-                                code : books[book].code,
+                                code: books[book].code,
                                 icon: books[book].image,
                                 name: books[book].title);
                           }));

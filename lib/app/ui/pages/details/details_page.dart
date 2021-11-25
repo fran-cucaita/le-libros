@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class DescPage extends StatelessWidget {
+class DetailPage extends StatelessWidget {
   static const String ROUTE = '/desc';
 
   @override

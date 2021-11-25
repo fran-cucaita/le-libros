@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:le_libros/app/ui/pages/details/desc_page.dart';
+import 'package:le_libros/app/ui/pages/details/details_page.dart';
 
 class BookWidget extends StatelessWidget {
   final String icon;
@@ -21,7 +21,7 @@ class BookWidget extends StatelessWidget {
           icon: Image.network(icon),
           iconSize: 150,
           onPressed: () {
-            Navigator.pushNamed(context, DescPage.ROUTE + '/' + code);
+            Navigator.pushNamed(context, DetailPage.ROUTE + '/' + code);
           },
         ),
         Padding(

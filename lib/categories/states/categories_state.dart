@@ -12,8 +12,8 @@ class ErrorCategoryState extends CategoryState {
   const ErrorCategoryState();
 }
 
-class LoadCategoryState extends CategoryState {
+class LoadedCategoryState extends CategoryState {
   final List<Category> categories;
 
-  LoadCategoryState(this.categories);
+  LoadedCategoryState(this.categories);
 }

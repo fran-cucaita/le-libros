@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart' show Widget, BuildContext;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_meedu/flutter_meedu.dart';
-import 'package:le_libros/app/ui/pages/details/desc_page.dart';
+import 'package:le_libros/app/ui/pages/details/details_page.dart';
 import 'package:le_libros/app/ui/pages/home/home.dart';
 import 'package:le_libros/app/ui/pages/login/login_page.dart';
 import 'package:le_libros/app/ui/pages/register/bloc/register_bloc.dart';
@@ -11,8 +11,8 @@ import 'package:le_libros/app/ui/pages/splash/bloc/events/load_splash_event.dart
 import 'package:le_libros/app/ui/pages/splash/bloc/splash_bloc.dart';
 import 'package:le_libros/app/ui/pages/splash/splash_page.dart';
 import 'package:le_libros/app/ui/routes/routes.dart';
-import 'package:le_libros/category_bloc.dart';
-import 'package:le_libros/events/category_event.dart';
+import 'package:le_libros/categories/category_bloc.dart';
+import 'package:le_libros/categories/events/category_event.dart';
 
 PageRoute onGenerateRoute(RouteSettings settings) {
   // Handle '/home'
@@ -56,7 +56,7 @@ PageRoute onGenerateRoute(RouteSettings settings) {
     }
     final bookCode = pathSegments[1];
 
-    return MaterialPageRoute(builder: (_) => DescPage());
+    return MaterialPageRoute(builder: (_) => DetailPage());
     //  MaterialPageRoute(
     //     builder: (_) => Scaffold(
     //           appBar: AppBar(),
