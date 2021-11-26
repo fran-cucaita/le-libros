@@ -60,8 +60,8 @@ PageRoute onGenerateRoute(RouteSettings settings) {
     return MaterialPageRoute(
         builder: (_) => MultiBlocProvider(providers: [
               BlocProvider(
-                  create: (_) =>
-                      Get.i.find<DetailBloc>()..add(LoadDetailsEvent(bookCode)))
+                  create: (_) => Get.i.factoryFind<DetailBloc, void>()
+                    ..add(LoadDetailsEvent(bookCode)))
             ], child: DetailPage()));
   }
 

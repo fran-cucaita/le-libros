@@ -24,15 +24,17 @@ class DetailPage extends StatelessWidget {
         return Scaffold(
           backgroundColor: Colors.amber,
           appBar: AppBar(),
-          body: Column(
-            children: [
-              BookDetailWidget(
-                image: details.image,
-                title: details.title,
-                author: details.author,
-                description: details.description,
-              )
-            ],
+          body: SingleChildScrollView(
+            child: Column(
+              children: [
+                BookDetailWidget(
+                  image: details.image,
+                  title: details.title,
+                  author: details.author,
+                  description: details.description,
+                )
+              ],
+            ),
           ),
         );
       }

@@ -8,9 +8,13 @@ class DetailBloc extends Bloc<DetailEvent, DetailState> {
   DetailBloc(this.httpHelper) : super(LoadingDetailState()) {
     on<LoadDetailsEvent>((event, emit) async {
       emit(const LoadingDetailState());
-
-      final details = await httpHelper.getBookDetails(event.code);
-      emit(LoadedDetailState(details: details));
+      try {
+        final details = await httpHelper.getBookDetails(event.code);
+        emit(LoadedDetailState(details: details));
+      } catch (err) {
+        print(err);
+        emit(ErrorDetailState());
+      }
     });
   }
 }

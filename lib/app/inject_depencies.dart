@@ -27,7 +27,7 @@ void injectDependencies() {
 
   Get.i.lazyPut<RegisterBloc>(() => RegisterBloc());
 
-  Get.i.lazyPut<DetailBloc>(() {
+  Get.i.factoryPut<DetailBloc, void>((_) {
     return DetailBloc(Get.i.find<HttpHelper>());
   });
 }
