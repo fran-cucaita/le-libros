@@ -5,7 +5,6 @@ abstract class DetailEvent {
 }
 
 class LoadDetailsEvent extends DetailEvent {
-  // final Response response;
-  // const LoadDetailsEvent(this.response);
-  const LoadDetailsEvent();
+  final String code;
+  const LoadDetailsEvent(this.code);
 }

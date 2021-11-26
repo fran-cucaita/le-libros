@@ -16,7 +16,7 @@ class HttpHelper {
       'https://i6zfxk6hzb.execute-api.us-west-2.amazonaws.com/dev/categories';
 
   static final String urlDetails =
-      'https://i6zfxk6hzb.execute-api.us-west-2.amazonaws.com/dev/books/la-escapada';
+      'https://i6zfxk6hzb.execute-api.us-west-2.amazonaws.com/dev/books/';
 
   Future<Response> getRecentPublished() async {
     final response = await http.get(Uri.parse(url));
@@ -34,8 +34,8 @@ class HttpHelper {
     return categories;
   }
 
-  Future<BookDetails> getBookDetails() async {
-    final urlDetail = await http.get(Uri.parse(urlDetails));
+  Future<BookDetails> getBookDetails(String code) async {
+    final urlDetail = await http.get(Uri.parse(urlDetails + code));
     final strbody = urlDetail.body;
     final body = json.decode(strbody);
     final detail = BookDetails.fromJson(body);

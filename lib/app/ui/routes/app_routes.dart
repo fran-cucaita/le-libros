@@ -61,7 +61,7 @@ PageRoute onGenerateRoute(RouteSettings settings) {
         builder: (_) => MultiBlocProvider(providers: [
               BlocProvider(
                   create: (_) =>
-                      Get.i.find<DetailBloc>()..add(const LoadDetailsEvent()))
+                      Get.i.find<DetailBloc>()..add(LoadDetailsEvent(bookCode)))
             ], child: DetailPage()));
   }
 
