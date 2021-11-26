@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:le_libros/app/ui/pages/details/bloc/events/detail_event.dart';
 import 'package:le_libros/app/ui/pages/details/bloc/states/detail_state.dart';
-import 'package:le_libros/categories/events/category_event.dart';
 import 'package:le_libros/helpers/http_helper.dart';
 
 class DetailBloc extends Bloc<DetailEvent, DetailState> {
