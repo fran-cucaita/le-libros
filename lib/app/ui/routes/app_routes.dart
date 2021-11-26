@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart' show Widget, BuildContext;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_meedu/flutter_meedu.dart';
 import 'package:le_libros/app/ui/pages/details/bloc/detail_bloc.dart';
+import 'package:le_libros/app/ui/pages/details/bloc/events/detail_event.dart';
 import 'package:le_libros/app/ui/pages/details/details_page.dart';
 import 'package:le_libros/app/ui/pages/home/home.dart';
 import 'package:le_libros/app/ui/pages/login/login_page.dart';
@@ -58,12 +58,11 @@ PageRoute onGenerateRoute(RouteSettings settings) {
     final bookCode = pathSegments[1];
 
     return MaterialPageRoute(
-        builder: (_) => MultiBlocProvider(
-              providers: [
-                BlocProvider(create: (_) => Get.i.find<DetailBloc>())
-              ],
-              child: DetailPage(),
-            ));
+        builder: (_) => MultiBlocProvider(providers: [
+              BlocProvider(
+                  create: (_) =>
+                      Get.i.find<DetailBloc>()..add(const LoadDetailsEvent()))
+            ], child: DetailPage()));
   }
 
   throw StateError("No encontre donde mandarte");
