@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:le_libros/app/ui/pages/details/bloc/detail_bloc.dart';
-import 'package:le_libros/app/ui/pages/details/bloc/states/detail_state.dart';
+
+import 'bloc/states/detail_state.dart';
 
 class DetailPage extends StatelessWidget {
   static const String ROUTE = '/desc';
