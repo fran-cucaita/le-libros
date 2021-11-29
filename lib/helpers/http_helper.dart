@@ -13,7 +13,7 @@ class HttpHelper {
       'https://i6zfxk6hzb.execute-api.us-west-2.amazonaws.com/dev/books/recent-published';
 
   static final String urlCategories =
-      'https://i6zfxk6hzb.execute-api.us-west-2.amazonaws.com/dev/categories';
+      'https://i6zfxk6hzb.execute-api.us-west-2.amazonaws.com/dev/categories=';
 
   static final String urlDetails =
       'https://i6zfxk6hzb.execute-api.us-west-2.amazonaws.com/dev/books/';

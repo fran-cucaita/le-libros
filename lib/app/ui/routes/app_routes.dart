@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_meedu/flutter_meedu.dart';
+import 'package:le_libros/app/ui/pages/categories/category_page.dart';
 import 'package:le_libros/app/ui/pages/details/bloc/detail_bloc.dart';
 import 'package:le_libros/app/ui/pages/details/bloc/events/detail_event.dart';
 import 'package:le_libros/app/ui/pages/details/details_page.dart';
@@ -63,6 +64,20 @@ PageRoute onGenerateRoute(RouteSettings settings) {
                   create: (_) => Get.i.factoryFind<DetailBloc, void>()
                     ..add(LoadDetailsEvent(bookCode)))
             ], child: DetailPage()));
+  } else if (firstSegment == Routes.Cat) {
+    if (pathSegments.length < 2) {
+      throw StateError(
+          "los segmentos deberian tener al menos el nombre de la categoria");
+    }
+    final categoryCode = pathSegments[1];
+
+    return MaterialPageRoute(
+        builder: (_) => Scaffold(
+              appBar: AppBar(),
+              body: Center(
+                child: Text('Estoy en category con codigo - $categoryCode'),
+              ),
+            ));
   }
 
   throw StateError("No encontre donde mandarte");
