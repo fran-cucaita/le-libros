@@ -100,6 +100,7 @@ class Home extends StatelessWidget {
                       return ButtonCategory(
                         title: categories[index].title,
                         image: categories[index].image,
+                        code: categories[index].code,
                       );
                     },
                   ),

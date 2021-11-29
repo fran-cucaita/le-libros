@@ -4,5 +4,5 @@ abstract class Routes {
   static const Register = '/register';
   static const Home = '/';
   static const Desc = '/desc';
-  static const Cat = '/category';
+  static const Category = '/category';
 }

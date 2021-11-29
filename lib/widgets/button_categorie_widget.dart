@@ -4,11 +4,13 @@ import 'package:le_libros/app/ui/pages/categories/category_page.dart';
 class ButtonCategory extends StatelessWidget {
   final String title;
   final String image;
+  final String code;
 
   const ButtonCategory({
     Key? key,
     required this.title,
     required this.image,
+    required this.code,
   }) : super(key: key);
 
   @override
@@ -24,7 +26,7 @@ class ButtonCategory extends StatelessWidget {
               color: Colors.black,
             )),
         onPressed: () {
-          Navigator.pushNamed(context, CategoryPage.ROUTE);
+          Navigator.pushNamed(context, CategoryPage.ROUTE + '/' + code);
           // Respond to button press
         },
         style: ElevatedButton.styleFrom(

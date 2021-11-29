@@ -52,6 +52,7 @@ PageRoute onGenerateRoute(RouteSettings settings) {
               child: RegisterPage(),
             ));
   } else if (firstSegment == Routes.Desc) {
+    print(pathSegments);
     if (pathSegments.length < 2) {
       throw StateError(
           "los segmentos deberian tener al menos el nombre del libro");
@@ -64,7 +65,8 @@ PageRoute onGenerateRoute(RouteSettings settings) {
                   create: (_) => Get.i.factoryFind<DetailBloc, void>()
                     ..add(LoadDetailsEvent(bookCode)))
             ], child: DetailPage()));
-  } else if (firstSegment == Routes.Cat) {
+  } else if (firstSegment == Routes.Category) {
+    print(pathSegments);
     if (pathSegments.length < 2) {
       throw StateError(
           "los segmentos deberian tener al menos el nombre de la categoria");
