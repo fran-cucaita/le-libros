@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_meedu/flutter_meedu.dart';
+import 'package:le_libros/app/trending_books/events/trending_event.dart';
+import 'package:le_libros/app/trending_books/trending_bloc.dart';
 import 'package:le_libros/app/ui/pages/categories/category_page.dart';
 import 'package:le_libros/app/ui/pages/details/bloc/detail_bloc.dart';
 import 'package:le_libros/app/ui/pages/details/bloc/events/detail_event.dart';
@@ -28,7 +30,10 @@ PageRoute onGenerateRoute(RouteSettings settings) {
         builder: (_) => MultiBlocProvider(providers: [
               BlocProvider(
                   create: (_) => Get.i.find<CategoryBloc>()
-                    ..add(const LoadCategoryEvent()))
+                    ..add(const LoadCategoryEvent())),
+              BlocProvider(
+                  create: (_) => Get.i.find<TrendingBloc>()
+                    ..add(const LoadTrendingEvent())),
             ], child: Home()));
   }
 
