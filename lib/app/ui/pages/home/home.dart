@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_meedu/flutter_meedu.dart';
 import 'package:le_libros/app/domain/models/response.dart';
 import 'package:le_libros/app/domain/repositories/authentication_repository.dart';
+import 'package:le_libros/app/trending_books/states/trending_state.dart';
+import 'package:le_libros/app/trending_books/trending_bloc.dart';
 import 'package:le_libros/app/ui/routes/routes.dart';
 import 'package:le_libros/categories/category_bloc.dart';
 import 'package:le_libros/categories/states/categories_state.dart';
@@ -13,8 +15,6 @@ import 'package:flutter_meedu/meedu.dart';
 import 'package:flutter_meedu/router.dart' as router;
 
 class Home extends StatelessWidget {
-  static const String ROUTE = '/home';
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -134,27 +134,35 @@ class Home extends StatelessWidget {
                     ],
                   )),
             ),
-            FutureBuilder<Response>(
-                future: HttpHelper().getRecentPublished(),
-                builder: (context, snapshot) {
-                  if (!snapshot.hasData) {
-                    return Container();
-                  }
-                  final response = snapshot.data!;
-                  final books = response.records;
-                  return SizedBox(
-                      height: 250,
-                      child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          padding: const EdgeInsets.all(4),
-                          itemCount: books.length,
-                          itemBuilder: (BuildContext context, int book) {
-                            return BookWidget(
-                                code: books[book].code,
-                                icon: books[book].image,
-                                name: books[book].title);
-                          }));
-                }),
+            BlocBuilder<TrendingBloc, TrendingState>(builder: (
+              context,
+              state,
+            ) {
+              if (state is LoadingTrendingState) {
+                return const CircularProgressIndicator();
+              } else if (state is ErrorTrendingState) {
+                return Text('Ups! Hubo un error');
+              } else if (state is LoadedTrendingState) {
+                final trendies = state.trendies;
+                final books = trendies.records;
+                return SizedBox(
+                  height: 300,
+                  child: ListView.builder(
+                    padding: EdgeInsets.all(5),
+                    scrollDirection: Axis.horizontal,
+                    itemCount: books.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return BookWidget(
+                        name: books[index].title,
+                        icon: books[index].image,
+                        code: books[index].code,
+                      );
+                    },
+                  ),
+                );
+              }
+              throw StateError('hubo un error');
+            }),
           ],
         ),
       )),
