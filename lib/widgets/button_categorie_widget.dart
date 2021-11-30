@@ -30,7 +30,7 @@ class ButtonCategory extends StatelessWidget {
           // Respond to button press
         },
         style: ElevatedButton.styleFrom(
-          primary: Colors.white60,
+          primary: Colors.white70,
           padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         ));
   }

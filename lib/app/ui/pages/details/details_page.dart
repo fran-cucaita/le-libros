@@ -22,11 +22,13 @@ class DetailPage extends StatelessWidget {
       } else if (state is LoadedDetailState) {
         final details = state.details;
         return Scaffold(
-          backgroundColor: Colors.amber,
-          appBar: AppBar(),
           body: SingleChildScrollView(
             child: Column(
               children: [
+                Container(
+                  height: 80,
+                  color: Colors.orangeAccent[200],
+                ),
                 BookDetailWidget(
                   image: details.image,
                   title: details.title,

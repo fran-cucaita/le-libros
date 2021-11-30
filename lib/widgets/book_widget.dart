@@ -24,10 +24,11 @@ class BookWidget extends StatelessWidget {
             Navigator.pushNamed(context, DetailPage.ROUTE + '/' + code);
           },
         ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
+        Container(
+          width: 130,
           child: Text(
             name,
+            textAlign: TextAlign.center,
             style: const TextStyle(
               color: Colors.black,
               fontSize: 16,

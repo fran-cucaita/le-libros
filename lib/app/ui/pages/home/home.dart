@@ -52,13 +52,6 @@ class Home extends StatelessWidget {
                 onChanged: (value) {},
               ),
             ),
-            ElevatedButton(
-              onPressed: () async {
-                await Get.i.find<AuthenticationRepository>().SignOut();
-                router.pushNamedAndRemoveUntil(Routes.LogIn);
-              },
-              child: Text('Sign Out'),
-            ),
             Container(
               width: 1000,
               child: Padding(
@@ -145,10 +138,10 @@ class Home extends StatelessWidget {
               } else if (state is LoadedTrendingState) {
                 final trendies = state.trendies;
                 final books = trendies.records;
-                return SizedBox(
-                  height: 300,
+                return Container(
+                  height: 250,
+                  padding: EdgeInsets.symmetric(vertical: 8),
                   child: ListView.builder(
-                    padding: EdgeInsets.all(5),
                     scrollDirection: Axis.horizontal,
                     itemCount: books.length,
                     itemBuilder: (BuildContext context, int index) {
@@ -163,6 +156,13 @@ class Home extends StatelessWidget {
               }
               throw StateError('hubo un error');
             }),
+            ElevatedButton(
+              onPressed: () async {
+                await Get.i.find<AuthenticationRepository>().SignOut();
+                router.pushNamedAndRemoveUntil(Routes.LogIn);
+              },
+              child: Text('Sign Out'),
+            ),
           ],
         ),
       )),
