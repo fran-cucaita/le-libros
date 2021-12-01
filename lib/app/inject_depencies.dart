@@ -25,6 +25,7 @@ void injectDependencies() {
   Get.i.lazyPut<CategoryBloc>(() {
     return CategoryBloc(Get.i.find<HttpHelper>());
   });
+
   Get.i.lazyPut<TrendingBloc>(() {
     return TrendingBloc(Get.i.find<HttpHelper>());
   });
