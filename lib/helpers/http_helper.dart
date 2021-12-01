@@ -13,7 +13,10 @@ class HttpHelper {
       'https://i6zfxk6hzb.execute-api.us-west-2.amazonaws.com/dev/books/recent-published';
 
   static final String urlCategories =
-      'https://i6zfxk6hzb.execute-api.us-west-2.amazonaws.com/dev/categories/';
+      'https://i6zfxk6hzb.execute-api.us-west-2.amazonaws.com/dev/categories';
+
+  static final String urlBooksCategory =
+      'https://i6zfxk6hzb.execute-api.us-west-2.amazonaws.com/dev/books?category=';
 
   static final String urlDetails =
       'https://i6zfxk6hzb.execute-api.us-west-2.amazonaws.com/dev/books/';
@@ -43,7 +46,7 @@ class HttpHelper {
   }
 
   Future<Response> getBookListByCategory(String code) async {
-    final urlCategoryBook = await http.get(Uri.parse(urlCategories + code));
+    final urlCategoryBook = await http.get(Uri.parse(urlBooksCategory + code));
     final strbody = urlCategoryBook.body;
     final body = json.decode(strbody);
     final response = Response.fromJson(body);

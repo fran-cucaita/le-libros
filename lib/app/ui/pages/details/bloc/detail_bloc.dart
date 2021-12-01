@@ -5,7 +5,7 @@ import 'package:le_libros/helpers/http_helper.dart';
 
 class DetailBloc extends Bloc<DetailEvent, DetailState> {
   final HttpHelper httpHelper;
-  DetailBloc(this.httpHelper) : super(LoadingDetailState()) {
+  DetailBloc(this.httpHelper) : super(const LoadingDetailState()) {
     on<LoadDetailsEvent>((event, emit) async {
       emit(const LoadingDetailState());
       try {
@@ -13,7 +13,7 @@ class DetailBloc extends Bloc<DetailEvent, DetailState> {
         emit(LoadedDetailState(details: details));
       } catch (err) {
         print(err);
-        emit(ErrorDetailState());
+        emit(const ErrorDetailState());
       }
     });
   }

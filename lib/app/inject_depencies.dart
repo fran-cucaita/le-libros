@@ -6,6 +6,7 @@ import 'package:le_libros/app/data/repositories_impl/sign_up_repository_impl.dar
 import 'package:le_libros/app/domain/repositories/authentication_repository.dart';
 import 'package:le_libros/app/domain/repositories/signup_repository.dart';
 import 'package:le_libros/app/trending_books/trending_bloc.dart';
+import 'package:le_libros/app/ui/pages/categories/bloc/category_book_bloc.dart';
 import 'package:le_libros/app/ui/pages/details/bloc/detail_bloc.dart';
 import 'package:le_libros/app/ui/pages/register/bloc/register_bloc.dart';
 import 'package:le_libros/categories/category_bloc.dart';
@@ -28,6 +29,9 @@ void injectDependencies() {
 
   Get.i.lazyPut<TrendingBloc>(() {
     return TrendingBloc(Get.i.find<HttpHelper>());
+  });
+  Get.i.lazyPut<CategoryBookBloc>(() {
+    return CategoryBookBloc(Get.i.find<HttpHelper>());
   });
 
   Get.i.lazyPut<RegisterBloc>(() => RegisterBloc());

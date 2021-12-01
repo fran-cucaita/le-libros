@@ -1,4 +1,3 @@
-import 'package:le_libros/app/domain/models/book.dart';
 import 'package:le_libros/app/domain/models/response.dart';
 
 abstract class TrendingState {
