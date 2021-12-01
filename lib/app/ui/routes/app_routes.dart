@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_meedu/flutter_meedu.dart';
 import 'package:le_libros/app/trending_books/events/trending_event.dart';
 import 'package:le_libros/app/trending_books/trending_bloc.dart';
+import 'package:le_libros/app/ui/pages/categories/bloc/category_book_bloc.dart';
+import 'package:le_libros/app/ui/pages/categories/bloc/category_books_events.dart';
 import 'package:le_libros/app/ui/pages/categories/category_page.dart';
 import 'package:le_libros/app/ui/pages/details/bloc/detail_bloc.dart';
 import 'package:le_libros/app/ui/pages/details/bloc/events/detail_event.dart';
@@ -79,12 +81,11 @@ PageRoute onGenerateRoute(RouteSettings settings) {
     final categoryCode = pathSegments[1];
 
     return MaterialPageRoute(
-        builder: (_) => Scaffold(
-              appBar: AppBar(),
-              body: Center(
-                child: Text('Estoy en category con codigo - $categoryCode'),
-              ),
-            ));
+        builder: (_) => MultiBlocProvider(providers: [
+              BlocProvider(
+                  create: (_) => Get.i.find<CategoryBookBloc>()
+                    ..add(LoadCategoryBookEvent(categoryCode)))
+            ], child: CategoryPage()));
   }
 
   throw StateError("No encontre donde mandarte");
