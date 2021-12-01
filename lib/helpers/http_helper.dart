@@ -41,4 +41,12 @@ class HttpHelper {
     final detail = BookDetails.fromJson(body);
     return detail;
   }
+
+  Future<Response> getBookListByCategory(String code) async {
+    final urlCategoryBook = await http.get(Uri.parse(urlCategories + code));
+    final strbody = urlCategoryBook.body;
+    final body = json.decode(strbody);
+    final response = Response.fromJson(body);
+    return response;
+  }
 }
