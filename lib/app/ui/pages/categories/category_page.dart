@@ -36,21 +36,20 @@ class CategoryPage extends StatelessWidget {
             ),
             backgroundColor: Colors.white,
           ),
-          body: SingleChildScrollView(
-            child: GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
-                  childAspectRatio: 0.5,
-                  crossAxisSpacing: 16,
-                  mainAxisSpacing: 16,
-                ),
-                itemBuilder: (BuildContext context, int index) {
-                  return BookWidget(
-                      icon: books[index].image,
-                      name: books[index].title,
-                      code: books[index].code);
-                }),
-          ),
+          body: GridView.builder(
+              itemCount: books.length,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+                childAspectRatio: 0.5,
+                crossAxisSpacing: 16,
+                mainAxisSpacing: 16,
+              ),
+              itemBuilder: (BuildContext context, int index) {
+                return BookWidget(
+                    icon: books[index].image,
+                    name: books[index].title,
+                    code: books[index].code);
+              }),
         );
       }
       throw StateError('hubo un error');
