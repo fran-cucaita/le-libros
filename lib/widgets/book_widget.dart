@@ -23,7 +23,7 @@ class BookWidget extends StatelessWidget {
       },
       child: Column(
         children: [
-          SizedBox(width: 110, child: Image.network(icon)),
+          Image.network(icon),
           SizedBox(
             height: 8,
           ),

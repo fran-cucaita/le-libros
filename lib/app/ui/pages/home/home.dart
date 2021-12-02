@@ -36,21 +36,6 @@ class Home extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              padding: EdgeInsets.all(10),
-              color: Colors.white,
-              width: 1000,
-              height: 90,
-              child: TextField(
-                style: TextStyle(),
-                decoration: const InputDecoration(
-                    prefixIcon: Icon(Icons.find_in_page, color: Colors.black),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(15))),
-                    hintText: 'Title, authors, or topics'),
-                onChanged: (value) {},
-              ),
-            ),
-            Container(
               width: 1000,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -154,16 +139,32 @@ class Home extends StatelessWidget {
               }
               throw StateError('hubo un error');
             }),
-            ElevatedButton(
-              onPressed: () async {
-                await Get.i.find<AuthenticationRepository>().SignOut();
-                router.pushNamedAndRemoveUntil(Routes.LogIn);
-              },
-              child: Text('Sign Out'),
-            ),
           ],
         ),
       )),
     );
   }
 }
+            // Container(
+            //   padding: EdgeInsets.all(10),
+            //   color: Colors.white,
+            //   width: 1000,
+            //   height: 90,
+            //   child: TextField(
+            //     style: TextStyle(),
+            //     decoration: const InputDecoration(
+            //         prefixIcon: Icon(Icons.find_in_page, color: Colors.black),
+            //         border: OutlineInputBorder(
+            //             borderRadius: BorderRadius.all(Radius.circular(15))),
+            //         hintText: 'Title, authors, or topics'),
+            //     onChanged: (value) {},
+            //   ),
+            // ),
+
+            // ElevatedButton(
+            //   onPressed: () async {
+            //     await Get.i.find<AuthenticationRepository>().SignOut();
+            //     router.pushNamedAndRemoveUntil(Routes.LogIn);
+            //   },
+            //   child: Text('Sign Out'),
+            // ),

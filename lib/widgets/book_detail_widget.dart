@@ -30,7 +30,6 @@ class BookDetailWidget extends StatelessWidget {
               children: [
                 Image.network(
                   image,
-                  width: 150,
                 ),
               ],
             ),
@@ -61,50 +60,6 @@ class BookDetailWidget extends StatelessWidget {
                   child: Column(
                     children: [
                       Text(
-                        'Rating',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.black,
-                        ),
-                      ),
-                      Text(
-                        '4,7',
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black),
-                      )
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    children: [
-                      Text(
-                        'Pages',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.black,
-                        ),
-                      ),
-                      Text(
-                        '240',
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black),
-                      )
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    children: [
-                      Text(
                         'Language',
                         textAlign: TextAlign.center,
                         style: TextStyle(
@@ -113,29 +68,7 @@ class BookDetailWidget extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        'epubLink',
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black),
-                      )
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    children: [
-                      Text(
-                        'Audio',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.black,
-                        ),
-                      ),
-                      Text(
-                        '02 hs',
+                        'SPA',
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
