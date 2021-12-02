@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:le_libros/widgets/book_widget.dart';
 
 import 'bloc/category_book_bloc.dart';
 import 'bloc/category_books_states.dart';
@@ -23,8 +24,32 @@ class CategoryPage extends StatelessWidget {
         final categoryBooks = state.categoryBooks;
         final books = categoryBooks.records;
         return Scaffold(
-          body: Center(
-            child: Text('hola esta es la page de categorias'),
+          appBar: AppBar(
+            centerTitle: true,
+            shadowColor: Colors.white,
+            iconTheme: IconThemeData(color: Colors.black),
+            title: Text(
+              'Categoria',
+              style: TextStyle(
+                color: Colors.black,
+              ),
+            ),
+            backgroundColor: Colors.white,
+          ),
+          body: SingleChildScrollView(
+            child: GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
+                  childAspectRatio: 0.5,
+                  crossAxisSpacing: 16,
+                  mainAxisSpacing: 16,
+                ),
+                itemBuilder: (BuildContext context, int index) {
+                  return BookWidget(
+                      icon: books[index].image,
+                      name: books[index].title,
+                      code: books[index].code);
+                }),
           ),
         );
       }
