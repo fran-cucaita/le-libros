@@ -46,9 +46,10 @@ class CategoryPage extends StatelessWidget {
               ),
               itemBuilder: (BuildContext context, int index) {
                 return BookWidget(
-                    icon: books[index].image,
-                    name: books[index].title,
-                    code: books[index].code);
+                  icon: books[index].image,
+                  name: books[index].title,
+                  code: books[index].code,
+                );
               }),
         );
       }

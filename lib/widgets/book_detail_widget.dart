@@ -5,6 +5,8 @@ class BookDetailWidget extends StatelessWidget {
   final String title;
   final String author;
   final String description;
+  final String epubLink;
+  final String mobiLink;
 
   const BookDetailWidget({
     Key? key,
@@ -12,6 +14,8 @@ class BookDetailWidget extends StatelessWidget {
     required this.title,
     required this.author,
     required this.description,
+    required this.epubLink,
+    required this.mobiLink,
   }) : super(key: key);
 
   @override
@@ -109,7 +113,7 @@ class BookDetailWidget extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        'ENG',
+                        'epubLink',
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
