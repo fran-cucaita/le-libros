@@ -147,14 +147,12 @@ class BookDetailWidget extends StatelessWidget {
                 ),
               ),
               onPressed: () {},
-              child: FittedBox(
-                child: Row(
-                  children: [
-                    Icon(Icons.audiotrack_rounded),
-                    Padding(padding: EdgeInsets.only(right: 8)),
-                    Text("Play Book"),
-                  ],
-                ),
+              child: Row(
+                children: [
+                  Icon(Icons.audiotrack_rounded),
+                  Padding(padding: EdgeInsets.only(right: 8)),
+                  Text("Play Book"),
+                ],
               ),
             )
           ],
