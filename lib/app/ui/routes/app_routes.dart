@@ -83,7 +83,7 @@ PageRoute onGenerateRoute(RouteSettings settings) {
     return MaterialPageRoute(
         builder: (_) => MultiBlocProvider(providers: [
               BlocProvider(
-                  create: (_) => Get.i.find<CategoryBookBloc>()
+                  create: (_) => Get.i.factoryFind<CategoryBookBloc, void>()
                     ..add(LoadCategoryBookEvent(categoryCode)))
             ], child: CategoryPage()));
   }

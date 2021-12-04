@@ -30,7 +30,7 @@ void injectDependencies() {
   Get.i.lazyPut<TrendingBloc>(() {
     return TrendingBloc(Get.i.find<HttpHelper>());
   });
-  Get.i.lazyPut<CategoryBookBloc>(() {
+  Get.i.factoryPut<CategoryBookBloc, void>((_) {
     return CategoryBookBloc(Get.i.find<HttpHelper>());
   });
 
