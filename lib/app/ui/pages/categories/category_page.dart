@@ -25,8 +25,8 @@ class CategoryPage extends StatelessWidget {
         final books = categoryBooks.records;
         return Scaffold(
           appBar: AppBar(
+            elevation: 0,
             centerTitle: true,
-            shadowColor: Colors.white,
             iconTheme: IconThemeData(color: Colors.black),
             title: Text(
               'Categoria',
@@ -34,23 +34,26 @@ class CategoryPage extends StatelessWidget {
                 color: Colors.black,
               ),
             ),
-            backgroundColor: Colors.white,
+            backgroundColor: Colors.transparent,
           ),
-          body: GridView.builder(
-              itemCount: books.length,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3,
-                childAspectRatio: 0.5,
-                crossAxisSpacing: 16,
-                mainAxisSpacing: 16,
-              ),
-              itemBuilder: (BuildContext context, int index) {
-                return BookWidget(
-                  icon: books[index].image,
-                  name: books[index].title,
-                  code: books[index].code,
-                );
-              }),
+          body: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: GridView.builder(
+                itemCount: books.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
+                  childAspectRatio: 0.5,
+                  crossAxisSpacing: 16,
+                  mainAxisSpacing: 16,
+                ),
+                itemBuilder: (BuildContext context, int index) {
+                  return BookWidget(
+                    icon: books[index].image,
+                    name: books[index].title,
+                    code: books[index].code,
+                  );
+                }),
+          ),
         );
       }
       throw StateError('hubo un error');

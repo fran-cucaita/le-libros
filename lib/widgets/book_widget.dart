@@ -23,7 +23,13 @@ class BookWidget extends StatelessWidget {
       },
       child: Column(
         children: [
-          Image.network(icon),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(8.0),
+            child: Image.network(
+              icon,
+              scale: 2,
+            ),
+          ),
           SizedBox(
             height: 8,
           ),
@@ -32,6 +38,8 @@ class BookWidget extends StatelessWidget {
             child: Text(
               name,
               textAlign: TextAlign.center,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 2,
               style: const TextStyle(
                 color: Colors.black,
                 fontSize: 16,

@@ -15,23 +15,37 @@ class ButtonCategory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton.icon(
-        icon: Image.network(
-          image,
-          width: 30,
-          height: 30,
+    return
+        // FittedBox(
+        // alignment: Alignment.centerLeft,
+        // fit: BoxFit.contain,
+        // child:
+        ElevatedButton(
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all(Colors.blueGrey[600]),
+        shape: MaterialStateProperty.all(
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(24)),
+          ),
         ),
-        label: Text(title,
-            style: TextStyle(
-              color: Colors.black,
-            )),
-        onPressed: () {
-          Navigator.pushNamed(context, CategoryPage.ROUTE + '/' + code);
-          // Respond to button press
-        },
-        style: ElevatedButton.styleFrom(
-          primary: Colors.white70,
-          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-        ));
+      ),
+      onPressed: () {
+        Navigator.pushNamed(context, CategoryPage.ROUTE + '/' + code);
+      },
+      child: Row(
+        children: [
+          Image.network(
+            image,
+            scale: 2,
+          ),
+          SizedBox(
+            width: 12,
+          ),
+          Text(
+            title,
+          ),
+        ],
+      ),
+    );
   }
 }

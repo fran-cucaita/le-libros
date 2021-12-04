@@ -61,16 +61,16 @@ class Home extends StatelessWidget {
               } else if (state is LoadedCategoryState) {
                 final categories = state.categories;
                 return SizedBox(
-                  height: 200,
+                  height: MediaQuery.of(context).size.height * .23,
                   child: GridView.builder(
                     padding: EdgeInsets.all(5),
                     scrollDirection: Axis.horizontal,
                     itemCount: categories.length,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 3,
-                      childAspectRatio: 0.3,
-                      crossAxisSpacing: 10,
-                      mainAxisSpacing: 20,
+                      childAspectRatio: 0.25,
+                      crossAxisSpacing: 8,
+                      mainAxisSpacing: 8,
                     ),
                     itemBuilder: (BuildContext context, int index) {
                       return ButtonCategory(
@@ -122,11 +122,12 @@ class Home extends StatelessWidget {
                 final trendies = state.trendies;
                 final books = trendies.records;
                 return Container(
-                  height: 250,
+                  height: MediaQuery.of(context).size.height * .3,
                   padding: EdgeInsets.symmetric(vertical: 8),
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: books.length,
+                    shrinkWrap: true,
                     itemBuilder: (BuildContext context, int index) {
                       return BookWidget(
                         name: books[index].title,
