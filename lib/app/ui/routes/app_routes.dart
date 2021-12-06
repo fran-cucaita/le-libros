@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_meedu/flutter_meedu.dart';
 import 'package:le_libros/app/trending_books/events/trending_event.dart';
 import 'package:le_libros/app/trending_books/trending_bloc.dart';
+import 'package:le_libros/app/trending_books/trending_page.dart';
 import 'package:le_libros/app/ui/pages/categories/bloc/category_book_bloc.dart';
 import 'package:le_libros/app/ui/pages/categories/bloc/category_books_events.dart';
 import 'package:le_libros/app/ui/pages/categories/category_page.dart';
@@ -86,6 +87,13 @@ PageRoute onGenerateRoute(RouteSettings settings) {
                   create: (_) => Get.i.factoryFind<CategoryBookBloc, void>()
                     ..add(LoadCategoryBookEvent(categoryCode)))
             ], child: CategoryPage()));
+  } else if (firstSegment == Routes.Trend) {
+    return MaterialPageRoute(
+        builder: (_) => MultiBlocProvider(providers: [
+              BlocProvider(
+                  create: (_) => Get.i.find<TrendingBloc>()
+                    ..add(const LoadTrendingEvent())),
+            ], child: TrendiesPage()));
   }
 
   throw StateError("No encontre donde mandarte");

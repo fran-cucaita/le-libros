@@ -5,4 +5,5 @@ abstract class Routes {
   static const Home = '/';
   static const Desc = '/desc';
   static const Category = '/category';
+  static const Trend = '/trendies';
 }

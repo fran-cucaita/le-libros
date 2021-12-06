@@ -91,20 +91,25 @@ class Home extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
+                      const Text(
                         "Trending Books",
-                        style: const TextStyle(
+                        style: TextStyle(
                           color: Colors.black,
                           fontSize: 26,
                           fontWeight: FontWeight.bold,
                         ),
                         textDirection: TextDirection.ltr,
                       ),
-                      Text(
-                        "See All",
-                        style: TextStyle(
-                          fontSize: 15,
-                          color: Colors.grey,
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, Routes.Trend);
+                        },
+                        child: const Text(
+                          "See All",
+                          style: TextStyle(
+                            fontSize: 15,
+                            color: Colors.grey,
+                          ),
                         ),
                       ),
                     ],

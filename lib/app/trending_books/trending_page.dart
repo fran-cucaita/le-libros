@@ -1,35 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:le_libros/app/domain/models/book.dart';
+import 'package:le_libros/app/trending_books/states/trending_state.dart';
+import 'package:le_libros/app/trending_books/trending_bloc.dart';
 import 'package:le_libros/widgets/book_widget.dart';
 
-import 'bloc/category_book_bloc.dart';
-import 'bloc/category_books_states.dart';
-
-class CategoryPage extends StatelessWidget {
-  const CategoryPage({Key? key}) : super(key: key);
-
-  static const String ROUTE = '/category';
+class TrendiesPage extends StatelessWidget {
+  const TrendiesPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CategoryBookBloc, CategoryBookState>(builder: (
+    return BlocBuilder<TrendingBloc, TrendingState>(builder: (
       context,
       state,
     ) {
-      if (state is LoadingCategoryBookState) {
+      if (state is LoadingTrendingState) {
         return Scaffold(body: Center(child: CircularProgressIndicator()));
-      } else if (state is ErrorCategoryBookState) {
+      } else if (state is ErrorTrendingState) {
         return Text('Ups! Hubo un error');
-      } else if (state is LoadedCategoryBookState) {
-        final categoryBooks = state.categoryBooks;
-        final books = categoryBooks.records;
+      } else if (state is LoadedTrendingState) {
+        final trendies = state.trendies;
+        final books = trendies.records;
         return Scaffold(
           appBar: AppBar(
             elevation: 0,
             centerTitle: true,
             iconTheme: IconThemeData(color: Colors.black),
             title: Text(
-              'Categories',
+              'Trending Books',
               style: TextStyle(
                 color: Colors.black,
               ),
@@ -48,10 +46,9 @@ class CategoryPage extends StatelessWidget {
                 ),
                 itemBuilder: (BuildContext context, int index) {
                   return BookWidget(
-                    icon: books[index].image,
-                    name: books[index].title,
-                    code: books[index].code,
-                  );
+                      icon: books[index].image,
+                      name: books[index].title,
+                      code: books[index].code);
                 }),
           ),
         );
