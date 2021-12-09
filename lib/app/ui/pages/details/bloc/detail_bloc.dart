@@ -3,6 +3,9 @@ import 'package:le_libros/app/ui/pages/details/bloc/events/detail_event.dart';
 import 'package:le_libros/app/ui/pages/details/bloc/states/detail_state.dart';
 import 'package:le_libros/helpers/http_helper.dart';
 
+import 'events/epub_event.dart';
+import 'events/mobi_event.dart';
+
 class DetailBloc extends Bloc<DetailEvent, DetailState> {
   final HttpHelper httpHelper;
   DetailBloc(this.httpHelper) : super(const LoadingDetailState()) {
@@ -15,6 +18,12 @@ class DetailBloc extends Bloc<DetailEvent, DetailState> {
         print(err);
         emit(const ErrorDetailState());
       }
+    });
+    on<EpubDetailsEvent>((event, emit) async {
+      print(event.link);
+    });
+    on<MobiDetailsEvent>((event, emit) async {
+      print(event.link);
     });
   }
 }

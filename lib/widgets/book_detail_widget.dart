@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:le_libros/app/ui/pages/details/bloc/detail_bloc.dart';
+import 'package:le_libros/app/ui/pages/details/bloc/events/epub_event.dart';
+import 'package:le_libros/app/ui/pages/details/bloc/events/mobi_event.dart';
 
 class BookDetailWidget extends StatelessWidget {
   final String image;
@@ -131,7 +135,11 @@ class BookDetailWidget extends StatelessWidget {
                   ),
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+                BlocProvider.of<DetailBloc>(context).add(
+                  EpubDetailsEvent(epubLink),
+                );
+              },
               child: Row(
                 children: [
                   Image.network(
@@ -164,7 +172,11 @@ class BookDetailWidget extends StatelessWidget {
                   ),
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+                BlocProvider.of<DetailBloc>(context).add(
+                  MobiDetailsEvent(mobiLink),
+                );
+              },
               child: Row(
                 children: [
                   Image.network(
