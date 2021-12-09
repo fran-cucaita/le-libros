@@ -15,13 +15,9 @@ class ButtonCategory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return
-        // FittedBox(
-        // alignment: Alignment.centerLeft,
-        // fit: BoxFit.contain,
-        // child:
-        ElevatedButton(
+    return ElevatedButton(
       style: ButtonStyle(
+        minimumSize: MaterialStateProperty.all(Size(150, 50)),
         backgroundColor: MaterialStateProperty.all(Colors.blueGrey[600]),
         shape: MaterialStateProperty.all(
           RoundedRectangleBorder(

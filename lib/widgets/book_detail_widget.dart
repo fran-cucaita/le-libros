@@ -20,6 +20,10 @@ class BookDetailWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final epubIcon =
+        'https://le-libros.s3.amazonaws.com/public/assets/images/ic_epub.png';
+    final mobiIcon =
+        'https://le-libros.s3.amazonaws.com/public/assets/images/ic_mobi.png';
     return Stack(
       children: [
         Column(
@@ -33,7 +37,7 @@ class BookDetailWidget extends StatelessWidget {
                     borderRadius: BorderRadius.circular(16.0),
                     child: Image.network(
                       image,
-                      scale: 2.3,
+                      height: MediaQuery.of(context).size.height * .45,
                     ),
                   ),
                   Container(
@@ -109,12 +113,14 @@ class BookDetailWidget extends StatelessWidget {
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Container(
-              height: MediaQuery.of(context).size.height * 1.4,
+              height: MediaQuery.of(context).size.height * .7 + 25,
             ),
             ElevatedButton(
               style: ButtonStyle(
+                minimumSize: MaterialStateProperty.all(Size(150, 50)),
                 backgroundColor:
                     MaterialStateProperty.all(Colors.blueGrey[600]),
                 shape: MaterialStateProperty.all(
@@ -128,14 +134,26 @@ class BookDetailWidget extends StatelessWidget {
               onPressed: () {},
               child: Row(
                 children: [
-                  Icon(Icons.book),
-                  Padding(padding: EdgeInsets.only(right: 8)),
-                  Text("Read Book"),
+                  Image.network(
+                    epubIcon,
+                    color: Colors.white,
+                    height: MediaQuery.of(context).size.height * .03,
+                  ),
+                  const SizedBox(
+                    width: 12,
+                  ),
+                  const Text("EPUB"),
                 ],
               ),
             ),
+            Container(
+              color: Colors.white,
+              height: 50,
+              width: 2,
+            ),
             ElevatedButton(
               style: ButtonStyle(
+                minimumSize: MaterialStateProperty.all(Size(150, 50)),
                 backgroundColor:
                     MaterialStateProperty.all(Colors.blueGrey[600]),
                 shape: MaterialStateProperty.all(
@@ -149,9 +167,15 @@ class BookDetailWidget extends StatelessWidget {
               onPressed: () {},
               child: Row(
                 children: [
-                  Icon(Icons.audiotrack_rounded),
-                  Padding(padding: EdgeInsets.only(right: 8)),
-                  Text("Play Book"),
+                  Image.network(
+                    mobiIcon,
+                    color: Colors.white,
+                    height: MediaQuery.of(context).size.height * .03,
+                  ),
+                  const SizedBox(
+                    width: 12,
+                  ),
+                  const Text("MOBI"),
                 ],
               ),
             )

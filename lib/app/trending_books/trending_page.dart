@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:le_libros/app/domain/models/book.dart';
 import 'package:le_libros/app/trending_books/states/trending_state.dart';
 import 'package:le_libros/app/trending_books/trending_bloc.dart';
 import 'package:le_libros/widgets/book_widget.dart';
