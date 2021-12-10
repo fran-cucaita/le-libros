@@ -26,9 +26,7 @@ class DetailBloc extends Bloc<DetailEvent, DetailState> {
         subject: event.title,
         attachments: [bookPath],
       );
-      print(event.code);
-      print(event.title);
-      print(event.link);
+      final MailerResponse response = await FlutterMailer.send(mailOptions);
     });
     on<MobiDetailsEvent>((event, emit) async {
       String bookPath = await httpHelper.downloadLink(event.link, event.code);
@@ -36,9 +34,7 @@ class DetailBloc extends Bloc<DetailEvent, DetailState> {
         subject: event.title,
         attachments: [bookPath],
       );
-      print(event.code);
-      print(event.title);
-      print(event.link);
+      final MailerResponse response = await FlutterMailer.send(mailOptions);
     });
   }
 }
