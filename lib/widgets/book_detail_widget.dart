@@ -5,6 +5,7 @@ import 'package:le_libros/app/ui/pages/details/bloc/events/epub_event.dart';
 import 'package:le_libros/app/ui/pages/details/bloc/events/mobi_event.dart';
 
 class BookDetailWidget extends StatelessWidget {
+  final String code;
   final String image;
   final String title;
   final String author;
@@ -20,6 +21,7 @@ class BookDetailWidget extends StatelessWidget {
     required this.description,
     required this.epubLink,
     required this.mobiLink,
+    required this.code,
   }) : super(key: key);
 
   @override
@@ -137,7 +139,7 @@ class BookDetailWidget extends StatelessWidget {
               ),
               onPressed: () {
                 BlocProvider.of<DetailBloc>(context).add(
-                  EpubDetailsEvent(epubLink),
+                  EpubDetailsEvent(epubLink, code, title),
                 );
               },
               child: Row(
@@ -173,9 +175,8 @@ class BookDetailWidget extends StatelessWidget {
                 ),
               ),
               onPressed: () {
-                BlocProvider.of<DetailBloc>(context).add(
-                  MobiDetailsEvent(mobiLink),
-                );
+                BlocProvider.of<DetailBloc>(context)
+                    .add(MobiDetailsEvent(mobiLink, code, title));
               },
               child: Row(
                 children: [

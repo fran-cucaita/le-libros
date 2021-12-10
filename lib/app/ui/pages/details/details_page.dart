@@ -37,6 +37,7 @@ class DetailPage extends StatelessWidget {
                   description: details.description,
                   epubLink: details.epubLink,
                   mobiLink: details.mobiLink,
+                  code: details.code,
                 )
               ],
             ),

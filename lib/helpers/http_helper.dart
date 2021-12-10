@@ -1,11 +1,11 @@
 import 'dart:convert';
+import 'dart:io';
 
-import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
-import 'package:le_libros/app/domain/models/book.dart';
 import 'package:le_libros/app/domain/models/category.dart';
 import 'package:le_libros/app/domain/models/response.dart';
 import 'package:le_libros/models/book_datails.dart';
+import 'package:path_provider/path_provider.dart';
 
 class HttpHelper {
   //static final String key ='x-api-key=1nzDBp77Nt97AZEjumlV7CmsiYrLTbA9NcbrieU2';
@@ -14,9 +14,6 @@ class HttpHelper {
 
   static final String urlCategories =
       'https://i6zfxk6hzb.execute-api.us-west-2.amazonaws.com/dev/categories';
-
-  // static final String urlBooksCategory =
-  //     'https://i6zfxk6hzb.execute-api.us-west-2.amazonaws.com/dev/books';
 
   static final String urlDetails =
       'https://i6zfxk6hzb.execute-api.us-west-2.amazonaws.com/dev/books';
@@ -52,5 +49,19 @@ class HttpHelper {
     final body = json.decode(strbody);
     final response = Response.fromJson(body);
     return response;
+  }
+
+  Future<String> downloadLink(String link, String bookCode) async {
+    String tmpDir = (await getTemporaryDirectory()).path;
+    http.Client client = new http.Client();
+    var res = await client.get(Uri.parse(link));
+    var bytes = res.bodyBytes;
+    File file = new File('$tmpDir/$bookCode');
+    await file.writeAsBytes(bytes);
+    return '$tmpDir/$bookCode';
+
+    ///$filename';
+
+    ///$filename'
   }
 }

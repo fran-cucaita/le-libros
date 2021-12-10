@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter_mailer/flutter_mailer.dart';
 import 'package:le_libros/app/ui/pages/details/bloc/events/detail_event.dart';
 import 'package:le_libros/app/ui/pages/details/bloc/states/detail_state.dart';
 import 'package:le_libros/helpers/http_helper.dart';
@@ -20,9 +21,23 @@ class DetailBloc extends Bloc<DetailEvent, DetailState> {
       }
     });
     on<EpubDetailsEvent>((event, emit) async {
+      String bookPath = await httpHelper.downloadLink(event.link, event.code);
+      final MailOptions mailOptions = MailOptions(
+        subject: event.title,
+        attachments: [bookPath],
+      );
+      print(event.code);
+      print(event.title);
       print(event.link);
     });
     on<MobiDetailsEvent>((event, emit) async {
+      String bookPath = await httpHelper.downloadLink(event.link, event.code);
+      final MailOptions mailOptions = MailOptions(
+        subject: event.title,
+        attachments: [bookPath],
+      );
+      print(event.code);
+      print(event.title);
       print(event.link);
     });
   }

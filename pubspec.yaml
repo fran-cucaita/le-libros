@@ -41,6 +41,8 @@ dependencies:
   flutter_meedu: ^5.2.0
   freezed: ^0.15.1+1
   freezed_annotation: ^0.15.0
+  path_provider: ^2.0.7
+  flutter_mailer: ^2.0.0
   
 
 
