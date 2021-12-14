@@ -11,6 +11,7 @@ import 'package:le_libros/widgets/button_categorie_widget.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_meedu/meedu.dart';
 import 'package:flutter_meedu/router.dart' as router;
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class Home extends StatelessWidget {
   @override
@@ -60,25 +61,33 @@ class Home extends StatelessWidget {
                 return Text('Ups! Hubo un error');
               } else if (state is LoadedCategoryState) {
                 final categories = state.categories;
-                return SizedBox(
-                  height: MediaQuery.of(context).size.height * .23,
-                  child: GridView.builder(
-                    padding: EdgeInsets.all(5),
-                    scrollDirection: Axis.horizontal,
+                return Container(
+                  height: 170.0,
+                  child: StaggeredGridView.countBuilder(
+                    crossAxisCount: 6,
                     itemCount: categories.length,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3,
-                      childAspectRatio: 0.25,
-                      crossAxisSpacing: 8,
-                      mainAxisSpacing: 8,
-                    ),
-                    itemBuilder: (BuildContext context, int index) {
-                      return ButtonCategory(
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (BuildContext context, int index) => Container(
+                      child: ButtonCategory(
                         title: categories[index].title,
                         image: categories[index].image,
                         code: categories[index].code,
-                      );
-                    },
+                      ),
+                    ),
+                    staggeredTileBuilder: (int index) => StaggeredTile.count(
+                      2,
+                      categories[index].title.length > 1
+                          ? categories[index].title.length >= 9
+                              ? categories[index].title.length >= 14
+                                  ? categories[index].title.length >= 18
+                                      ? 8
+                                      : 7
+                                  : 6
+                              : 5
+                          : 1,
+                    ),
+                    mainAxisSpacing: 8,
+                    crossAxisSpacing: 8.0,
                   ),
                 );
               }
@@ -151,26 +160,26 @@ class Home extends StatelessWidget {
     );
   }
 }
-            // Container(
-            //   padding: EdgeInsets.all(10),
-            //   color: Colors.white,
-            //   width: 1000,
-            //   height: 90,
-            //   child: TextField(
-            //     style: TextStyle(),
-            //     decoration: const InputDecoration(
-            //         prefixIcon: Icon(Icons.find_in_page, color: Colors.black),
-            //         border: OutlineInputBorder(
-            //             borderRadius: BorderRadius.all(Radius.circular(15))),
-            //         hintText: 'Title, authors, or topics'),
-            //     onChanged: (value) {},
-            //   ),
-            // ),
+// Container(
+//   padding: EdgeInsets.all(10),
+//   color: Colors.white,
+//   width: 1000,
+//   height: 90,
+//   child: TextField(
+//     style: TextStyle(),
+//     decoration: const InputDecoration(
+//         prefixIcon: Icon(Icons.find_in_page, color: Colors.black),
+//         border: OutlineInputBorder(
+//             borderRadius: BorderRadius.all(Radius.circular(15))),
+//         hintText: 'Title, authors, or topics'),
+//     onChanged: (value) {},
+//   ),
+// ),
 
-            // ElevatedButton(
-            //   onPressed: () async {
-            //     await Get.i.find<AuthenticationRepository>().SignOut();
-            //     router.pushNamedAndRemoveUntil(Routes.LogIn);
-            //   },
-            //   child: Text('Sign Out'),
-            // ),
+// ElevatedButton(
+//   onPressed: () async {
+//     await Get.i.find<AuthenticationRepository>().SignOut();
+//     router.pushNamedAndRemoveUntil(Routes.LogIn);
+//   },
+//   child: Text('Sign Out'),
+// ),

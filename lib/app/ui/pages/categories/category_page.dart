@@ -40,7 +40,7 @@ class CategoryPage extends StatelessWidget {
             padding: const EdgeInsets.all(16.0),
             child: GridView.builder(
                 itemCount: books.length,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3,
                   childAspectRatio: 0.5,
                   crossAxisSpacing: 16,

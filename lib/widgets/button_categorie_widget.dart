@@ -17,7 +17,7 @@ class ButtonCategory extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ButtonStyle(
-        minimumSize: MaterialStateProperty.all(Size(150, 50)),
+        elevation: MaterialStateProperty.all(10),
         backgroundColor: MaterialStateProperty.all(Colors.blueGrey[600]),
         shape: MaterialStateProperty.all(
           RoundedRectangleBorder(
@@ -39,6 +39,9 @@ class ButtonCategory extends StatelessWidget {
           ),
           Text(
             title,
+            overflow: TextOverflow.visible,
+            maxLines: 1,
+            style: TextStyle(),
           ),
         ],
       ),
