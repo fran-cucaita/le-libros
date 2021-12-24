@@ -14,6 +14,59 @@
       },
       "oauth_client": [
         {
+          "client_id": "305610546696-0cutc13b2bqlo1cipt0mh0v0pbbk4uip.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.le_libros",
+            "certificate_hash": "45af1799627c13d4d6759b4ba3200310d11044a3"
+          }
+        },
+        {
+          "client_id": "305610546696-iekgtq10ob3q14d3hkvrjb69sapnruoh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.le_libros",
+            "certificate_hash": "b5500ac21ad6eaa2306e2ac1317950bcb3a8448f"
+          }
+        },
+        {
+          "client_id": "305610546696-q7jlpkmatvb9f97abbgmtqch7qhcdk64.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjOGRINqoZpL436Wr9B6t0lEEdD2tbRus"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "305610546696-q7jlpkmatvb9f97abbgmtqch7qhcdk64.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:305610546696:android:670ed72498d0f8ddabfbbd",
+        "android_client_info": {
+          "package_name": "me.franciscocucaita.le_libros"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "305610546696-93opi6196motb62kbehqfbhjcfkfp3vq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "me.franciscocucaita.le_libros",
+            "certificate_hash": "9e5aa3f390092fe8e58c9c18dbabd95b24eb86af"
+          }
+        },
+        {
           "client_id": "305610546696-q7jlpkmatvb9f97abbgmtqch7qhcdk64.apps.googleusercontent.com",
           "client_type": 3
         }
