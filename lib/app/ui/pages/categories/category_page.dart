@@ -29,7 +29,7 @@ class CategoryPage extends StatelessWidget {
             centerTitle: true,
             iconTheme: IconThemeData(color: Colors.black),
             title: Text(
-              'Categories',
+              'titulo de la categoria',
               style: TextStyle(
                 color: Colors.black,
               ),

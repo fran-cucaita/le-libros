@@ -24,7 +24,7 @@ class Home extends StatelessWidget {
         elevation: 0,
         centerTitle: true,
         title: Text(
-          "Home",
+          "Le Libros",
           style: TextStyle(
             color: Colors.black,
           ),
@@ -41,7 +41,7 @@ class Home extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  "Categories",
+                  "Categorias",
                   textAlign: TextAlign.start,
                   style: TextStyle(
                     fontSize: 26,
@@ -79,8 +79,10 @@ class Home extends StatelessWidget {
                       categories[index].title.length > 1
                           ? categories[index].title.length >= 9
                               ? categories[index].title.length >= 14
-                                  ? categories[index].title.length >= 18
-                                      ? 8
+                                  ? categories[index].title.length >= 16
+                                      ? categories[index].title.length >= 18
+                                          ? 8.5
+                                          : 8
                                       : 7
                                   : 6
                               : 5
@@ -101,7 +103,7 @@ class Home extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text(
-                        "Trending Books",
+                        "Tendencias",
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 26,
@@ -114,7 +116,7 @@ class Home extends StatelessWidget {
                           Navigator.pushNamed(context, Routes.Trend);
                         },
                         child: const Text(
-                          "See All",
+                          "Ver Todos",
                           style: TextStyle(
                             fontSize: 15,
                             color: Colors.grey,

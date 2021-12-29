@@ -27,6 +27,7 @@ class ButtonCategory extends StatelessWidget {
       ),
       onPressed: () {
         Navigator.pushNamed(context, CategoryPage.ROUTE + '/' + code);
+        print(code);
       },
       child: Row(
         children: [
